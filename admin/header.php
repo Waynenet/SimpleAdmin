@@ -11,7 +11,7 @@ $header = '<link rel="stylesheet" href="' . $options->adminStaticUrl('css', 'nor
 $header = Typecho_Plugin::factory('admin/header.php')->header($header);
 
 ?><!DOCTYPE HTML>
-<html data-color-mode="<?php if($_COOKIE['night']=='1')echo 'dark';else echo 'light'; ?>">
+<html data-color-mode="<?php if(array_key_exists('night', $_COOKIE) and $_COOKIE['night']=='1')echo 'dark';else echo 'light'; ?>">
 <head>
     <meta charset="<?php $options->charset(); ?>">
     <meta name="renderer" content="webkit">
@@ -21,6 +21,3 @@ $header = Typecho_Plugin::factory('admin/header.php')->header($header);
     <?php echo $header; ?>
 </head>
 <body<?php if (isset($bodyClass)) {echo ' class="' . $bodyClass . '"';} ?>>
-<!--[if lt IE 9]>
-        <div class="message error browsehappy" role="dialog"><?php _e('当前网页 <strong>不支持</strong> 你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/">升级你的浏览器</a>'); ?>.</div>
-    <![endif]-->
